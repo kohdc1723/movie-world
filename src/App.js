@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
-//import "./App.css";
+import { AiOutlineSearch } from "react-icons/ai";
 import "./index.css";
-import searchIcon from "./search.svg";
 
 const API_URL = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}`;
 
@@ -22,26 +21,25 @@ const App = () => {
     }, []);
 
     return (
-        <div className="bg-slate-900">
-            <h1 className="mt-20 text-5xl text-center text-amber-500">Movie Land</h1>
+        <div className="bg-stone-900">
+            <h1 className="pt-20 text-9xl text-center text-amber-500 font-bebas-neue">Movie World</h1>
 
-            <div className="mt-20">
-                <input placeholder="Search for movies" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-                <img  src={searchIcon} alt="search" onClick={() => searchMovies(searchTerm)} />
+            <div className="flex justify-between relative items-center mt-20 h-12 w-1/2 mx-auto bg-stone-800 rounded-full">
+                <input className="bg-stone-800 text-amber-500 h-12 w-full text-lg rounded-full pl-5 placeholder-amber-500" placeholder="Search for movies" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                <AiOutlineSearch className="absolute text-amber-500 text-2xl right-5 hover:cursor-pointer" onClick={() => searchMovies(searchTerm)} />
             </div>
 
-            {movies?.length > 0
-                ? (
-                    <div className="container">
-                        {movies.map((movie) => (
-                            <MovieCard movie={movie} />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="empty">
-                        <h2>No movies found</h2>
-                    </div>
-                )}
+            {movies?.length > 0 ? (
+                <div className="flex flex-wrap gap-10 mt-20 justify-center">
+                    {movies.map((movie) => (
+                        <MovieCard movie={movie} />
+                    ))}
+                </div>
+            ) : (
+                <div className="mt-20">
+                    <h2>No movies found</h2>
+                </div>
+            )}
         </div>
     );
 }
