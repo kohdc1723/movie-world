@@ -32,7 +32,7 @@ const App = () => {
             {movies?.length > 0 ? (
                 <div className="flex flex-wrap gap-10 mt-20 justify-center">
                     {movies.map((movie) => (
-                        <MovieCard movie={movie} />
+                        <MovieCard movie={movie} key={movie.imdbID} />
                     ))}
                 </div>
             ) : (
