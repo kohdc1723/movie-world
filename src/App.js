@@ -36,8 +36,8 @@ const App = () => {
                     ))}
                 </div>
             ) : (
-                <div className="mt-20">
-                    <h2>No movies found</h2>
+                <div className="mt-20 text-center">
+                    <h2 className="text-xl text-amber-500">No movies found</h2>
                 </div>
             )}
         </div>
